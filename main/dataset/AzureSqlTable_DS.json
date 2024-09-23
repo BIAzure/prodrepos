@@ -1,0 +1,35 @@
+{
+	"name": "AzureSqlTable_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseLinkedServices",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Cname",
+				"type": "varchar"
+			},
+			{
+				"name": "Camount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Clocation",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Azure_Data"
+		}
+	}
+}
