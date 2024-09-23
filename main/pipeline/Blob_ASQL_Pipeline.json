@@ -5,7 +5,14 @@
 			{
 				"name": "Blob Copy data ASQL",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "NewSPWait",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -103,6 +110,31 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "NewSPWait",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			},
+			{
+				"name": "WaitSP",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "Blob Copy data ASQL",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
 			}
 		],
 		"annotations": []
